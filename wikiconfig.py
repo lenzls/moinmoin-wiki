@@ -65,7 +65,7 @@ class Config(multiconfig.DefaultConfig):
     # Wiki identity ----------------------------------------------------
 
     # Site name, used by default for wiki name-logo [Unicode]
-    sitename = u'Untitled Wiki'
+    sitename = u'Memo Wiki'
 
     # Wiki logo. You can use an image, text or both. [Unicode]
     # For no logo or text, use '' - the default is to show the sitename.
@@ -92,7 +92,7 @@ class Config(multiconfig.DefaultConfig):
 
     # This is checked by some rather critical and potentially harmful actions,
     # like despam or PackageInstaller action:
-    superuser = [u"mmAdmin", ]
+    superuser = [u"simon", ]
 
     # Some actions are by default only enabled for superusers and disabled
     # for everybody else.
@@ -107,11 +107,11 @@ class Config(multiconfig.DefaultConfig):
     # IMPORTANT: grant yourself admin rights! replace YourName with
     # your user name. See HelpOnAccessControlLists for more help.
     # All acl_rights_xxx options must use unicode [Unicode]
-    #acl_rights_before = u"mmAdmin:read,write,delete,revert,admin"
+    #acl_rights_before = u"simon:read,write,delete,revert,admin"
 
     # This is the default ACL that applies to pages without an ACL.
     # Adapt it to your needs, consider using an EditorGroup.
-    acl_rights_default = u"Trusted:read,write,delete,revert Known:read All:read,write,delete,revert"
+    acl_rights_default = u"Known:read,write,delete,revert All:"
 
     # The default (ENABLED) password_checker will keep users from choosing too
     # short or too easy passwords. If you don't like this and your site has
@@ -184,3 +184,21 @@ class Config(multiconfig.DefaultConfig):
     # Enable graphical charts, requires gdchart.
     #chart_options = {'width': 600, 'height': 300}
 
+    # Backup options ----------------------------------------------------
+
+    # Who is allowed to perform remote backup, change this!
+    backup_users = ['simon']
+
+    # What to backup
+    backup_include = [ data_dir, ] # this is the default value, see multiconfig.py
+
+    # Backup exclude - each file is matched against this list, any match will
+    # be excluded from the backup. By default, cache files, python compiled modules
+    # and various temporary files are excluded.
+    # BE CAREFUL: this stuff is used as a regex and therefore must be valid regexes.
+    #backup_exclude = [ # this is the default value, see multiconfig.py
+    #    r"(.+\.py(c|o)$)",
+    #    r"%(cache_dir)s",
+    #    r"%(/)spages%(/)s.+%(/)scache%(/)s[^%(/)s]+$" % {'/': os.sep},
+    #    r"%(/)s(edit-lock|event-log|\.DS_Store)$" % {'/': os.sep},
+    #]

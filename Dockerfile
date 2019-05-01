@@ -19,7 +19,8 @@ RUN apt-get update && apt-get install -qqy --no-install-recommends \
   nginx \
   uwsgi \
   uwsgi-plugin-python \
-  rsyslog
+  rsyslog \
+  python-markdown
 
 # Download MoinMoin
 RUN curl -OkL \
